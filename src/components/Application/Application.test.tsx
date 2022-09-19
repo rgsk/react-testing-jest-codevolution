@@ -5,6 +5,20 @@ describe('Application', () => {
   test('renders correctly', () => {
     render(<Application />);
     /*
+        All heading elements h1 to h6 have the role heading
+    */
+    const pageHeading = screen.getByRole('heading', {
+      name: 'Job application form',
+      level: 1,
+    });
+    expect(pageHeading).toBeInTheDocument();
+    const sectionHeading = screen.getByRole('heading', {
+      name: 'Section 1',
+      level: 2,
+    });
+    expect(sectionHeading).toBeInTheDocument();
+
+    /*
         getByRole Options
         name
         The accessible name is for simple cases equal to
