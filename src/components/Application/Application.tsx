@@ -7,9 +7,13 @@ export const Application = () => {
       <span title="close">X</span>
       <img src="https://via.placeholder.com/150" alt="a person with a laptop" />
       <div data-testid="custom-element">Custom HTML element</div>
-      {/* A <form> element needs an accessible name to have the form role. So you need <form aria-label="form" /> or <form aria-labelledby="form-label-element-id" />. */}
+      {/* A <form> element needs an accessible name to have the form role.
+       So you need <form aria-label="form" /> or <form aria-labelledby="form-label-element-id" />. */}
       <form aria-label="form">
         <div>
+          {/* not here removing either htmlFor (for label element) or id (for input
+          element) caused the test to fail this is because those two are responsible
+          for creating the link and label with text Name is found so test passes */}
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -19,10 +23,12 @@ export const Application = () => {
             onChange={() => {}}
           />
         </div>
-        {/* <div>
-          <label htmlFor="bio">Bio</label>
+        <div>
+          <label htmlFor="bio" aria-label="Bio">
+            Bio Text Content is different but aria-label is matches
+          </label>
           <textarea id="bio" />
-        </div> */}
+        </div>
         <div>
           <label htmlFor="job-location">Job location</label>
           <select id="job-location">
